@@ -1,1 +1,1 @@
-# Student_administration_system_PHP_Symfony
+# Student administration system PHP Symfony
