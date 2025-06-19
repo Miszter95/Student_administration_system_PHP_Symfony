@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Study Group{% endblock %}
+
+{% block body %}
+
+            <div>s
+
+        {{ form_start(form) }}
+
+                {% for SGroup in form.study_groups %}
+
+                        <div style="display: inline-block; width: 350px">
+                            <div style="margin-bottom: 10px">
+                                {{ form_row(SGroup.group_name) }}
+                            </div>
+                            <div style="margin-bottom: 10px">
+                                {{ form_row(SGroup.group_leader) }}
+                            </div>
+                            <div style="margin-bottom: 10px">
+                                {{ form_row(SGroup.subject) }}
+                            </div>
+                            <div style="margin-bottom: 100px">
+                                {{ form_label(SGroup.datetime_of_study_group) }}
+                                {{ form_widget(SGroup.datetime_of_study_group) }}
+                                <div style="color: #ff0000">{{ form_errors(SGroup.datetime_of_study_group) }}</div>
+                            </div>
+                        </div>
+
+                {% endfor %}
+
+
+        {{ form_end(form) }}
+
+    <a class="sgroups_back" href="{{ path('study_groups') }}"><button type="submit" style="background-color: #e97d43; border-radius: 5px ;border: 0; width: 80px; height: 25px; color: #ffffff; margin-top: 10px">Back</button></a>
+    </div>
+
+{% endblock %}

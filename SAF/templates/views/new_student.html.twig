@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Student{% endblock %}
+
+{% block body %}
+
+    <div style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+        {{ form_start(form) }}
+
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.name) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.sex) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.email_address) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.place_of_birth) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_label(form.date_of_birth) }}
+            {{ form_widget(form.date_of_birth) }}
+            <div style="color: #ff0000">{{ form_errors(form.date_of_birth) }}</div>
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.study_groups) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_label(form.imageFile) }}
+            {{ form_widget(form.imageFile) }}
+            <div style="color: #ff0000">{{ form_errors(form.imageFile) }}</div>
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.save) }}
+        </div>
+
+        {{ form_end(form) }}
+
+    <a class="students_back" href="{{ path('students') }}"><button type="submit" style="background-color: #e97d43; border-radius: 5px ;border: 0; width: 80px; height: 25px; color: #ffffff">Back</button></a>
+    </div>
+
+{% endblock %}

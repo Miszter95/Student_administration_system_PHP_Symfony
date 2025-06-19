@@ -1,0 +1,81 @@
+# These are the routes for my administration system
+
+index:
+    path: /
+    controller: App\Controller\MainController::index
+    methods: GET
+
+students:
+    path: /students
+    controller: App\Controller\StudentController::studentsShow
+    methods: GET|POST
+
+study_groups:
+    path: /study-groups
+    controller: App\Controller\StudyGroupController::studentsGroupShow
+    methods: GET
+
+edit_student:
+    path: /students/edit-student
+    controller: App\Controller\StudentController::editStudent
+    methods: GET|POST
+
+delete_students:
+    path: /students/delete-students
+    controller: App\Controller\StudentController::deleteStudents
+    methods: GET|DELETE
+
+new_student:
+    path: /students/new-student
+    controller: App\Controller\StudentController::newStudent
+    methods: GET|POST
+
+studentsearch:
+    path: /students/search
+    controller: App\Controller\StudentController::name_search
+    methods: GET|POST
+
+groupsearch:
+    path: /study-groups/search
+    controller: App\Controller\StudyGroupController::name_search_in_groups
+    methods: GET|POST
+
+group_filter:
+    path: /students/filter
+    controller: App\Controller\StudentController::group_filter
+    methods: GET|POST
+
+student_filter:
+    path: /study-groups/filter
+    controller: App\Controller\StudyGroupController::student_filter
+    methods: GET|POST
+
+edit_study_group:
+    path: /study-groups/edit-studygroup
+    controller: App\Controller\StudyGroupController::editSGroup
+    methods: GET|POST
+
+delete_study_groups:
+    path: /study-groups/delete-study-groups
+    controller: App\Controller\StudyGroupController::deleteStudyGroups
+    methods: GET|DELETE
+
+new_study_group:
+    path: /study-groups/new-studygroup
+    controller: App\Controller\StudyGroupController::newSGroup
+    methods: GET|POST
+
+user_settings:
+    path: /user/settings/{id}
+    controller: App\Controller\UserController::userEditSettings
+    methods: GET|POST
+
+new_user:
+    path: /user/new
+    controller: App\Controller\UserController::newUser
+    methods: GET|POST
+
+delete_all_users:
+    path: /user/delete
+    controller: App\Controller\UserController::delete_users
+    methods: GET|DELETE

@@ -1,0 +1,233 @@
+/*
+These are my styles except some styles which are on the twig files
+ */
+
+body{
+    background: #e8ecef;
+}
+
+.body-container{
+    width: 83%;
+    margin: auto;
+}
+
+header{
+    width: 83%;
+    margin: auto;
+    background: #e8ecef;
+    height: 150px;
+}
+
+.logo{
+    float: left;
+    padding: 30px;
+}
+
+nav{
+    float: right;
+    display: inline-block;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li{
+    display: inline-block;
+    margin-left: -50px;
+    padding: 30px;
+}
+
+a{
+    text-decoration: none;
+}
+.drop-button {
+    background-color: #e8ecef;
+    border: none;
+}
+
+.drop {
+    display: inline-block;
+    position: relative;
+}
+
+.drop-content {
+    position: absolute;
+    display: none;
+    text-align: center;
+    background-color: #ffffff;
+    min-width: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.drop-content a {
+    display: block;
+    color: #000000;
+}
+
+.drop-content a:hover {background-color: #ddd;}
+
+.drop:hover .drop-content {display: block;}
+
+.flash{
+    background-color: red;
+    height: 30px;
+    text-align: center;
+}
+
+.flash p{
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.tab{
+    display: inline-block;
+    width: 35%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 150px;
+    line-height: 150px;
+}
+
+.tabp{
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+    margin-left: 40px;
+}
+
+.table{
+    width: 100%;
+    background: #ffffff;
+    border-collapse: collapse;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-top: -5px;
+}
+
+.firsttr{
+    border-bottom: 1px solid #f4f5f6
+}
+
+.show{
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+.show p{
+    margin-bottom: 10px;
+}
+
+.show input{
+    width: 50%;
+    height: 25px;
+}
+
+.searchname{
+    font-family: FontAwesome, serif;
+    background: #e4e8eb;
+}
+
+::placeholder{
+    color: #f9fafc;
+    opacity: 1;
+}
+
+.fa-user{
+    color: #000000;
+    margin-right: 10px;
+}
+
+.fa-edit{
+    color: #ffffff; float: left
+}
+
+.newButton button{
+    background-color: #34cbe0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border: 0;
+    width: 80px;
+    height: 25px;
+    color: #ffffff;
+    position: relative;
+    top: -1.5px;
+}
+
+.editButton{
+    background-color: #2bc0d4;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border: 0;
+    width: 20px;
+    height: 25px;
+    margin-right: -4px;
+}
+
+.deleteAll{
+    background-color: #ff0000;
+    border-top-right-radius: 2px;
+    margin-top: 10px ;
+    border-bottom-right-radius: 2px;
+    border: 0;
+    width: 80px;
+    height: 25px;
+    color: #ffffff;
+    position: relative;
+    top: -1.5px;
+}
+
+.control {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.control_indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: #e2e6e9;
+    border: 0 solid #000000;
+    border-radius: 0;
+}
+
+.control input:checked ~ .control_indicator {
+    background: #ed7632;
+}
+
+.control_indicator:after {
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
+.control input:checked ~ .control_indicator:after {
+    display: block;
+}
+.control-checkbox .control_indicator:after {
+    left: 8px;
+    top: 4px;
+    width: 3px;
+    height: 8px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.control-checkbox input:disabled ~ .control_indicator:after {
+    border-color: #7b7b7b;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block head %}
+            <link rel="icon" type="image/png" href="{{ asset('images/saf_icon.png') }}" sizes="32x32"/>
+        {% endblock %}
+
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+            <script src="{{ asset('js/check_uncheck_allcheckbox.js') }}"></script>
+
+        {% endblock %}
+
+        <script src="https://kit.fontawesome.com/a0a267600e.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        {{ include('includes/navbar.html.twig') }}
+        {% block body %}{% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    </body>
+</html>

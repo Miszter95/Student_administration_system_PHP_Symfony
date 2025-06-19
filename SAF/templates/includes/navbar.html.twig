@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<body>
+<header style="height: 150px">
+    <div class="container">
+        <a href="{{ path('students') }}"><img src="{{ asset('images/saf_emblem.jpg') }}" alt="logo" class="logo"></a>
+
+        <nav>
+            {%  for user in users|default([]) %}
+            <ul>
+                <li><img src="{{ asset('images/studentspics/' ~ user.imagefilename) }}" alt="photo" class="photo" width="59" height="59"></li>
+                <li>{{ user.username }}</li>
+
+                <div class="drop">
+                    <button class="drop-button"><i  class="fas fa-chevron-down fa-lg"></i></button>
+                    <div class="drop-content">
+                        <a href="/user/settings/{{ user.id }}">Settings</a>
+                        <a href="/">Log out</a>
+                    </div>
+                </div>
+
+            </ul>
+            {% endfor %}
+        </nav>
+
+    </div>
+</header>
+</body>

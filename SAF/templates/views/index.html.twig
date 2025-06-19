@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+        <title>Student Administration Framework</title>
+        <link rel="icon" type="image/png" href="{{ asset('images/saf_icon.png') }}" sizes="32x32"/>
+        <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+{% block body %}
+        <div style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+                <div><img src="{{ asset('images/saf_emblem.jpg') }}" alt="logo" class="logo">
+                <h1>Student Administration Framework</h1>
+                <a class="entry" href="{{ path('new_user') }}"><button type="submit" style="background-color: #34cbe0; color: #ffffff; border-color: #34cbe0; border-radius: 2px; margin-left: 50px ;width: 400px ;height: 50px">Entry for the website</button></a>
+                <p style="text-align: center">Created by Boldizsár András</p>
+        </div>
+{% endblock %}

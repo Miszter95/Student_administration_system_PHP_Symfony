@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('error') %}
+        <div class="flash">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <div>
+        {{ form_start(form) }}
+
+        {% for Student in form.enrolled_students %}
+
+            <div style="display: inline-block; width: 450px">
+                <div style="margin-bottom: 10px">
+                    {{ form_row(Student.name) }}
+                </div>
+                <div style="margin-bottom: 10px">
+                    {{ form_row(Student.sex) }}
+                </div>
+                <div style="margin-bottom: 10px">
+                    {{ form_row(Student.email_address) }}
+                </div>
+                <div style="margin-bottom: 10px">
+                    {{ form_row(Student.place_of_birth) }}
+                </div>
+                <div style="margin-bottom: 10px">
+                    {{ form_label(Student.date_of_birth) }}
+                    {{ form_widget(Student.date_of_birth) }}
+                    <div style="color: #ff0000">{{ form_errors(Student.date_of_birth) }}</div>
+                </div>
+                <div style="margin-bottom: 10px">
+                    {{ form_row(Student.study_groups) }}
+                </div>
+                <div style="margin-bottom: 50px">
+                    {{ form_label(Student.imageFile) }}
+                    {{ form_widget(Student.imageFile) }}
+                    <div style="color: #ff0000">{{ form_errors(Student.imageFile) }}</div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+        {{ form_end(form) }}
+
+    <a class="students_back" href="{{ path('students') }}"><button type="submit" style="background-color: #e97d43; border-radius: 5px ;border: 0; width: 80px; height: 25px; color: #ffffff; margin-top: 10px">Back</button></a>
+
+{% endblock %}

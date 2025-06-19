@@ -1,0 +1,44 @@
+<title>New User</title>
+
+<head>
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('images/saf_icon.png') }}" sizes="32x32"/>
+</head>
+
+{% block body %}
+<div style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+    {% if(users|length < 1) %}
+    <div>
+        <h1>Please first create an user for this website!</h1>
+    </div>
+
+    <div style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+        {{ form_start(form) }}
+
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.username) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.email_address) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.password) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.imageFile) }}
+        </div>
+        <div style="margin-bottom: 10px">
+            {{ form_row(form.save) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+    {% else %}
+        <a href="{{ path('delete_all_users') }}"><p>You have already created an user, but if you want to change the user please use this link to delete that earlier user!</p></a>
+        <a href="{{ path('students') }}"><button type="submit" style="background-color: #34cbe0; border-radius: 5px ;border: 0; width: 100px; height: 50px; color: #ffffff">Continue to the website</button></a>
+    {% endif %}
+
+    <a class="students_back" href="/"><button type="submit" style="background-color: #e97d43; border-radius: 5px ;border: 0; width: 80px; height: 25px; color: #ffffff">Back</button></a>
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student Administration Framework{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('result') %}
+        <div class="flash">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <div class="body-container">
+        <a href="{{ path('students') }}">
+            <div class="tab" style="background-color: #ffffff">
+                <div class="tabp">
+                    <p style="color: #36ccdd">STUDENTS</p>
+                    <p style="color: #767779">{{ allStudents|length }} student registered</p>
+                </div>
+            </div>
+        </a>
+
+
+        <a href="{{ path('study_groups') }}">
+            <div class="tab" style="margin: 5px; background-color: #f3f7fa">
+                <div class="tabp">
+                    <p style="color: #9ea8ae" >STUDY GROUPS</p>
+                    <p style="color: #dadee1">{{ study_groups|length}} study groups with {{ student_in_groups}} students</p>
+                </div>
+            </div>
+        </a>
+
+        <table class="table">
+            <tr class="firsttr">
+                <td style="width: 25%">
+                    <div class="show">
+                        <p>SEARCH FOR NAME</p>
+                        <form  id="search" method="POST" action="{{ path('studentsearch') }}">
+                            <label for="inputname"></label><input type="search" name="nameSearch" id="inputname" class="searchname" placeholder="&#xf002">
+                        </form>
+                    </div>
+                </td>
+                <td style="width: 50%">
+                    <i class="far fa-user"><b> {{ allStudents|length }} STUDENTS</b></i>
+                    <button type="submit" class="editButton" form="deleteEditForm" name="editCheck" title="Edit" formaction="/students/edit-student"><i class="far fa-edit"></i></button>
+                    <a class="newButton" href="{{ path('new_student') }}"><button type="submit" name="new" title="Create new student">New</button></a>
+                </td>
+                <td style="text-align: right; width: 25%">
+                    {% if allStudents|length > 10 %}
+                    {{ knp_pagination_render(students) }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="margin-left: 40px">
+                        <tr>
+                            <td style="color: #a4acb0" colspan="2">FILTERS FOR STUDY GROUPS</td>
+                        </tr>
+                        <form id="filter" action="{{ path('group_filter') }}" method="POST">
+                        {%  for study_group in study_groups %}
+                        <tr>
+                            <td style="width: 10%">
+                                <label class="control control-checkbox">
+                                <input type="checkbox" name="checkid[]" value="{{ study_group.id }}"  class="check"
+                                        onchange="document.getElementById('filter').submit()">
+                                    <div class="control_indicator"></div>
+                                </label>
+                                    </td>
+                            <td>{{ study_group.groupname }}</td>
+                        </tr>
+                        {% endfor %}
+                        </form>
+                    </table>
+                </td>
+                <td colspan="3">
+
+                        <form id="deleteEditForm" action="{{ path('delete_students') }}">
+                    <table class="table" style="background-color: #ffffff; width: 97%; ">
+                        <tr style="color: #a4acb0; border-bottom: 1px solid #f4f5f6">
+                            <td>
+                                <label class="control control-checkbox">
+                                <input type="checkbox" value="select" name="checkAll" id="check" class="check" onclick="select_all()">
+                                    <div class="control_indicator"></div>
+                                </label>
+                            </td>
+                            <td style="width: 10%"></td>
+                            <td style="width: 20%">NAME</td>
+                            <td style="width: 10%">SEX</td>
+                            <td style="width: 25%">PLACE AND DATE OF BIRTH</td>
+                            <td style="text-align: right; width: 35%">GROUPS</td>
+                        </tr>
+                        {%  for student in students %}
+                            <tr style="border-bottom: 1px solid #f4f5f6">
+                                <td style="width: 10%">
+                                    <label class="control control-checkbox">
+                                        <input type="checkbox" name="id[]" value="{{ student.id }}" class="check">
+                                        <div class="control_indicator"></div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <img src="{{ asset('images/studentspics/' ~ student.studentImagefilename) }}" alt="photo" class="photo" width="59" height="59">
+                                </td>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.sex }}</td>
+                                <td>{{ student.placeofbirth }}, {{ student.dateofbirth|date("Y.m.d") }}</td>
+                                <td style="text-align: right">
+                                    {% for sgroup in student.studygroups|sort((a,b) => a.groupname <=> b.groupname) %}
+                                        {% if loop.index == 1  and student.studygroups|length > 1 %}
+                                            {{ sgroup.groupname }},
+                                        {% elseif loop.index == 2 or student.studygroups|length == 1 %}
+                                            {{ sgroup.groupname }}
+                                        {% elseif loop.index == 3 %}
+                                            and <span style="color: #e97d43"> {{ student.studygroups|length -  loop.index + 1}} more</span>
+                                        {% endif%}
+                                    {% endfor %}
+                                </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <button type="submit" class="deleteAll" name="deleteAllChecks">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+{% endblock %}

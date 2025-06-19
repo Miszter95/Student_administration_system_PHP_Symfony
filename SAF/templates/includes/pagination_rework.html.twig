@@ -1,0 +1,42 @@
+<div class="ui pagination menu">
+    {% for page in pagesInRange %}
+        {% if page == startPage %}
+            {% if page == current %}
+                <a class="fist item" href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                    <button type="submit" style="color: #e79168; background-color: #ced7de; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border: 0; width: 25px; height: 30px">{{ page }}
+                    </button>
+                </a>
+            {% else %}
+                <a class="fist item" href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                    <button type="submit" style="color: #ffffff; background-color: #ced7de; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border: 0; width: 25px; height: 30px" >{{ page }}
+                    </button>
+                </a>
+            {% endif %}
+        {% elseif page == endPage %}
+            {% if page == current %}
+                <a class="last item" href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                    <button type="submit" style="color: #e79168; background-color: #ced7de; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border: 0; width: 25px; height: 30px">{{ page }}
+                    </button>
+                </a>
+            {% else %}
+                <a class="last item" href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                    <button type="submit" style="color: #ffffff; background-color: #ced7de; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border: 0; width: 25px; height: 30px">{{ page }}
+                    </button>
+                </a>
+            {% endif %}
+        {% elseif page != startPage and page != endPage %}
+            {% if page == current %}
+                <a class="last item" href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                    <button type="submit" style="color: #e79168; background-color: #ced7de; border: 0; width: 25px; height: 30px">{{ page }}
+                    </button>
+                </a>
+            {% else %}
+                <a class="last item" href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                    <button type="submit" style="color: #ffffff; background-color: #ced7de; border: 0; width: 25px; height: 30px">{{ page }}
+                    </button>
+                </a>
+            {% endif %}
+        {% endif %}
+
+    {% endfor %}
+</div>

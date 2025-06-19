@@ -1,0 +1,59 @@
+<head>
+    <style>
+        body{
+            background-color: #e8ecef;
+            text-align: center;
+        }
+
+        .saf_logo{
+            width: 25%;
+
+        }
+
+        .statement{
+            color: #36ccdd;
+        }
+
+        .foot{
+            color: #7f8082;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="header">
+            <a href="{{ url('index') }}">
+                <img src="{{ absolute_url(asset('images/saf_emblem.jpg')) }}" class="saf_logo" alt="SAF logo">
+            </a>
+        </div>
+        <div class="information">
+            {% if option == 1 %}
+                <h1 class="statement">Welcome {{ student.name }} to the Student Administration System!</h1>
+                <p class="detail">Your profile has been created!</p>
+                {% for change in changes %}
+                    <p class="detail">{{ change }}</p>
+                {% endfor %}
+            {% elseif option == 2 %}
+                <h1 class="statement">Changes has been happened in the Student Administration System!</h1>
+                {% for change in changes %}
+                    <p class="detail">{{ change }}</p>
+                {% endfor %}
+            {% elseif option == 3 %}
+                <h1 class="statement">Profile delete in the Student Administration System!</h1>
+                <p class="detail">The profile named {{ student.name}} has been deleted!</p>
+            {% elseif option == 4 %}
+                <h1 class="statement">Changes has been happened in the Student Administration System!</h1>
+                <p class="detail">The profile named {{ student.name }} has been deleted from the {{ changes.groupname }} group, because the group has been deleted!</p>
+            {% endif %}
+        </div>
+        <div class="footer">
+            <p>Yours Sincerely,</p>
+            <p>SAF</p>
+            <p class="foot">This is an automatically generated message. Please do not write to this email address!</p>
+        </div>
+
+    </div>
+
+</body>
